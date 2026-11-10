@@ -35,6 +35,14 @@ public class HotelApp {
         System.out.println("Available Suites: " + hotel.getAvailableSuites());
         System.out.println("Available Rooms: " + hotel.getAvailableRooms());
 
+
+        //crate reservation object
+        // Create reservation object
+        Reservation reservation1 = new Reservation("Mohamed Bilal", "King Suite", 3, 150.00);
+
+       // Display reservation information
+        System.out.println(reservation1);
+
         System.out.println("\n============ Thank You for using the Hotel App ============");
     }
 }
