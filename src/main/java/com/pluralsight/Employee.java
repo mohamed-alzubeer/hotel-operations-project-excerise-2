@@ -1,6 +1,7 @@
 package com.pluralsight;
 
 import java.sql.SQLOutput;
+import java.time.LocalDateTime;
 
 public class Employee {
 
@@ -28,9 +29,10 @@ public class Employee {
     }
 
     //create the punchIn() method
-    public void puchIn(int time) {
+    public void punchIn(int time) {
+
         if (checkedIn) {
-            System.out.println("Employee is already punch in ");
+            System.out.println("Employee is already punched in ");
         } else {
             startTime = time;
             checkedIn = true;
@@ -39,10 +41,23 @@ public class Employee {
         }
 
 
+
+
+    }
+//check the localDataTime
+    public void punchIn() {
+        LocalDateTime now = LocalDateTime.now();
+        int time = now.getHour() * 100 + now.getMinute();
+        punchIn(time);
     }
 
+    public void punchOut() {
+        LocalDateTime now = LocalDateTime.now();
+        int time = now.getHour() * 100 + now.getMinute();
+        punchOut(time);
+    }
     //crate punchedout() method
-    public void puchOut(int time) {
+    public void punchOut(int time) {
         if (!checkedIn) {
             System.out.println(name + "must puch in first.");
             return;
@@ -51,7 +66,7 @@ public class Employee {
         }
         //I want to make sure punch out time is not earlier than punch in time
         if (time < startTime) {
-            System.out.println("punch out time can not be earkier than punch in time.");
+            System.out.println("punch out time can not be earlier than punch in time.");
             return;
         }
         //calculate the worked
@@ -63,7 +78,7 @@ public class Employee {
         //employee is no clock in
         checkedIn = false;
 
-        System.out.println(name + " work " + shifHours + " hours. ");
+        System.out.println(name + " worked " + shifHours + " hours. ");
         System.out.println("Total hours worked: " + hoursWorked);
 
     }
@@ -71,9 +86,9 @@ public class Employee {
     //create punchTimeCard() method
     public void punchTimeCard(int startTime) {
         if (checkedIn) {
-            puchOut(startTime);
+            punchOut(startTime);
         } else {
-            puchIn(startTime);
+            punchIn(startTime);
         }
     }
 
