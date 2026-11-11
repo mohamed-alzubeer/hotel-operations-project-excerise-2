@@ -62,6 +62,14 @@ public class Room {
             System.out.println("Can not clean occupied room");
         }
     }
+// i create this methods because I will need it in Room test to know the room is occupied or dirty
+    public boolean isOccupied() {
+        return occupied;
+    }
+
+    public boolean isDirty() {
+        return dirty;
+    }
 }
 
 
